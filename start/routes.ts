@@ -20,6 +20,6 @@ router.post('/api/v1/inventario', ([InventoryController, "create"]))
 
 router.put('/api/v1/inventario/:id', ([InventoryController, "update"]))
 
-router.delete('/api/v1/inventario/:id', ([InventoryController, "delete"]))
+router.delete('/api/v1/inventario/:id', ([InventoryController, "destroy"]))
 
 router.post('/login', ([AuthController, "login"]))

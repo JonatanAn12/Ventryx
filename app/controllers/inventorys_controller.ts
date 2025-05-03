@@ -48,42 +48,37 @@ export default class InventoryController {
   //* Actualizar registro existente
   public async update({ params, request, response }: HttpContext) {
     try {
-      const registro = await Historico.find(params.id)
+      console.log('ID recibido para actualizar:', params.id); // Depuración
+      const registro = await Historico.find(params.id);
       if (!registro) {
-        return response.status(404).json({ error: 'Registro no encontrado' })
+        return response.status(404).json({ error: 'Registro no encontrado' });
       }
-      const requestData = request.only(['codigo', 'nombre_producto', 'categoria', 'stock', 'min_stock', 'u_m'])
-      registro.merge(requestData)
-      await registro.save()
-      return response.status(200).json(registro)
+  
+      const requestData = request.only(['codigo', 'nombre_producto', 'categoria', 'stock', 'min_stock', 'u_m']);
+      registro.merge(requestData);
+      await registro.save();
+      return response.status(200).json(registro);
     } catch (error) {
-      return response.status(500).json({ error: 'Error al actualizar el registro' })
+      console.error('Error al actualizar el registro:', error);
+      return response.status(500).json({ error: 'Error al actualizar el registro' });
     }
   }
 
   //* Eliminar un registro por código
-  public async delete({ params, response }: HttpContext) {
+  public async destroy({ params, response }: HttpContext) {
     try {
-      // Obtener el código desde los parámetros
-      const codigo = params.codigo
-
-      // Validar que el código sea un número
-      if (isNaN(Number(codigo))) {
-        return response.status(400).json({ error: 'Código inválido' })
+      console.log('ID recibido para eliminar:', params.id); // Depuración
+      if (!params.id) {
+        return response.status(400).json({ error: 'ID no proporcionado' });
       }
-
-      // Buscar el registro por código
-      const registro = await Historico.findBy('codigo', codigo)
-      if (!registro) {
-        return response.status(404).json({ error: 'Registro no encontrado' })
-      }
-
-      // Eliminar el registro
-      await registro.delete()
-      return response.status(200).json({ message: 'Registro eliminado correctamente' })
+  
+      const producto = await Historico.findOrFail(params.id); // Buscar el producto por ID
+      console.log('Producto encontrado:', producto); // Depuración
+      await producto.delete(); // Eliminar el producto
+      return response.status(200).json({ message: 'Producto eliminado exitosamente' });
     } catch (error) {
-      console.error('Error al eliminar el registro:', error)
-      return response.status(500).json({ error: 'Error al eliminar el registro' })
+      console.error('Error al eliminar el producto:', error);
+      return response.status(400).json({ error: 'Error al eliminar el producto' });
     }
   }
 }
