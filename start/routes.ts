@@ -8,9 +8,18 @@
 */
 
 import router from '@adonisjs/core/services/router'
+import  InventoryController  from '../app/controllers/inventorys_controller.js'
+import  AuthController  from '../app/controllers/login_controller.js'
 
-router.get('/', async () => {
-  return {
-    hello: 'world',
-  }
-})
+
+router.get('/api/v1/inventario', ([InventoryController, "index"]))
+
+router.get('/api/v1/inventario/:id', ([InventoryController, "show"]))
+
+router.post('/api/v1/inventario', ([InventoryController, "create"]))
+
+router.put('/api/v1/inventario/:id', ([InventoryController, "update"]))
+
+router.delete('/api/v1/inventario/:id', ([InventoryController, "delete"]))
+
+router.post('/login', ([AuthController, "login"]))
