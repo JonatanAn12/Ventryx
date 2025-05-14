@@ -6,12 +6,12 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.integer('codigo').notNullable()
-      table.integer('productos_id').notNullable().unsigned().references('id').inTable('productos').onDelete('CASCADE') // Cambiado a integer
-      table.integer('categorias_id').notNullable().unsigned().references('id').inTable('categorias').onDelete('CASCADE') // Cambiado a integer
-      table.integer('stock').notNullable()
-      table.integer('min_stock').notNullable()
-      table.string('u_m').nullable()
+      table.integer('codigo').notNullable() // Cambiado a snake_case
+      table.string('producto').notNullable()
+      table.string('categoria').notNullable() // Cambiado a snake_case
+      table.integer('stock').notNullable() // Cambiado a snake_case
+      table.integer('min_stock').notNullable() // Cambiado a snake_case
+      table.string('u_m') // Cambiado a snake_case
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })

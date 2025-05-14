@@ -8,7 +8,7 @@ export default class extends BaseSchema {
       table.increments('id')
       table.string('descripcion').notNullable() 
       table.integer('precio').notNullable() 
-      table.integer('unidad_medida_id').notNullable().unsigned().references('id').inTable('unidad_medidas').onDelete('CASCADE') 
+      table.integer('unidad_medida_id').notNullable()
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })
