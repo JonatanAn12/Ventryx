@@ -5,10 +5,10 @@ export default class InventoryController {
   //* Crear un nuevo registro
   public async create({ request, response }: HttpContext) {
     try {
-      const requestData = request.only(['codigo', 'nombre_producto', 'categoria', 'stock', 'min_stock', 'u_m'])
+      const requestData = request.only(['codigo', 'producto', 'categoria', 'stock', 'min_stock', 'u_m'])
       const data = {
         codigo: requestData.codigo,
-        nombre_producto: requestData.nombre_producto,
+        producto: requestData.producto,
         categoria: requestData.categoria,
         stock: requestData.stock,
         min_stock: requestData.min_stock,
