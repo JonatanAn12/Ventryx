@@ -10,7 +10,8 @@ export default class extends BaseSeeder {
         nombre: 'jonatan',
         correo: 'jonatan@example.com',
         contrasena: '12345',
-      })
+        apellido: 'perez',  
+          })
     }
   }
 }

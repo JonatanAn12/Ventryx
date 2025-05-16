@@ -10,7 +10,6 @@ export default class extends BaseSchema {
       table.string('correo', 254).notNullable().unique()
       table.string('contrasena').notNullable()
       table.string('apellido').notNullable()
-      table.date('fecha_nacimiento').notNullable()
       table.timestamp('created_at').notNullable()
       table.timestamp('updated_at').nullable()
     })

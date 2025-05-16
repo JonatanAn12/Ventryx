@@ -10,7 +10,7 @@ export default class Historico extends BaseModel {
   @column()
   declare codigo: number
   @column()
-  declare nombre_producto: string 
+  declare producto: string 
   @column()
   declare categoria: string
   @column()
