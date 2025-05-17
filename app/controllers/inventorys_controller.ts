@@ -17,7 +17,7 @@ export default class InventoryController {
       const nuevoRegistro = await Historico.create(data)
       return response.status(201).json(nuevoRegistro)
     } catch (error) {
-      return response.status(500).json({ error: 'Error al crear el registro' })
+      return response.status(500).json({ error: 'Error al  crear el registro' })
     }
   }
 
